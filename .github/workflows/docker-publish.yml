@@ -4,17 +4,13 @@ on:
   push:
     branches: [ "main" ]
 jobs:
-  run-lint:
+  docker-build-and-push:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0     
-  docker-build-and-push:
-    runs-on: ubuntu-latest
-    needs: run-lint
-    steps:
+          fetch-depth: 0
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -32,4 +28,4 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/kii-demo-01:latest  
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/djangoapp
