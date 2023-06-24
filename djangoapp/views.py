@@ -13,6 +13,12 @@ def index(request):
             form.save()
         # return redirect("index")
     people = Person.objects.all()
+    if len(people) == 0:
+        obj = Person(name="Mario", surname="Petkoski")
+        obj.save()
+
+    people = Person.objects.all()
+
     context = {
         'people': people,
         'form': PersonForm

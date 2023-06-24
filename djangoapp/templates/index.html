@@ -7,9 +7,11 @@
 <body>
 <div>
 <ul>
-{% for person in people %}
-    <li>{{ person.name }} {{ person.surname }}</li>
-{% endfor %}
+{% if people %}
+    {% for person in people %}
+        <li>{{ person.name }} {{ person.surname }}</li>
+    {% endfor %}
+{% endif %}
 </ul>
 </div>
 <div>
